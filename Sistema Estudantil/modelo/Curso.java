@@ -1,18 +1,15 @@
 package modelo;
 
-/* 
-Importar o item professor responsavel para dentro do curso; 
-terminar de construir o curso;
-*/
-
 import java.util.UUID;
+
 public class Curso {
 
     private UUID idCurso;
     private String nomeCurso;
     private String cargaHoraria;
+    private Professor professor;
 
-    public Curso(){}
+    public Curso() {}
 
     public Curso(String nomeCurso, String cargaHoraria) {
         this.idCurso = UUID.randomUUID();
@@ -20,10 +17,24 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public Curso(String nomeCurso, String cargaHoraria, Professor professor) {
+        this.idCurso = UUID.randomUUID();
+        this.nomeCurso = nomeCurso;
+        this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
+    }
+
     public Curso(UUID idCurso, String nomeCurso, String cargaHoraria) {
         this.idCurso = (idCurso != null) ? idCurso : UUID.randomUUID();
         this.nomeCurso = nomeCurso;
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public Curso(UUID idCurso, String nomeCurso, String cargaHoraria, Professor professor) {
+        this.idCurso = (idCurso != null) ? idCurso : UUID.randomUUID();
+        this.nomeCurso = nomeCurso;
+        this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
     }
 
     public UUID getIdCurso() {
@@ -50,4 +61,15 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public String getNomeProfessor() {
+        return (professor != null) ? professor.getNomeCompleto() : null;
+    }
 }
